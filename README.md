@@ -13,9 +13,9 @@
 
 ## Installation
 
-Installing `lplus` from source, like any Beamer theme, involves three steps:
+Installing `lplus` from source involves three steps:
 
-1. Download the source with a git clone of the Metropolis repository or as a zip archive of the latest development version.
+1. Download the source with a git clone of the repository or as a zip archive of the latest development version.
 2. Move the `*.sty` files to the folder containing your presentation. To install `lplus` system-wide, move the `*.sty` files to a folder in your TeX path instead.
 3. Use the theme for your presentation by declaring \usetheme{lplus} in the preamble of your Beamer document.
 
