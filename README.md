@@ -1,10 +1,12 @@
-<center><img src="assets/lplus.png", width="200"/></center>
+<p align="center">
+  <img src="assets/lplus.png", width="200"/>
+</p>
 
 ---
 
 # lplus
 
-`lplus` is a beautiful minimalistic, flexible, fully-featured Beamer theme. It aims for a simplistic, clean look that puts your content first, while providing sensible defaults for all aspects, including a custom color theme.
+`lplus` is a beautiful minimalistic, flexible, fully-featured Beamer theme. It aims for a simplistic, clean look that puts your content first, while providing sensible defaults for all aspects, including a custom color theme and automatic darkmode.
 
 ![Sample](assets/preview.png)
 
