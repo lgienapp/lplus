@@ -1,0 +1,64 @@
+% --------------------------------------------------------------------
+% Name           : beamerouterthemelplus.sty
+% Author         : Lukas Gienapp
+% Version        : 0.1
+% License        : This file may be distributed and/or modified under 
+%				   the GNU Public License.
+% Description    : A simplistic, feature-complete Beamer theme.
+%---------------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerouterthemelplus}[2018/04/11 lplus outer theme]
+
+%---------------------------------------------------------------------
+% Headline
+%---------------------------------------------------------------------
+\defbeamertemplate*{headline}{headline}{%
+	% Headline is intentionally left blank
+}%
+\setbeamertemplate{headline}[headline]
+
+%---------------------------------------------------------------------
+% Footline
+%---------------------------------------------------------------------
+\usenavigationsymbolstemplate{}
+\defbeamertemplate{footline}{footline}{%
+    \begin{beamercolorbox}[
+        wd=\paperwidth,
+        sep=1mm,%
+		rightskip=2mm,%,
+        ht=4mm,
+    ]{palette primary}%
+        \strut
+        \usebeamerfont{footer}
+        \if@doSectionPage\@empty{%
+        }\else{
+            \ifx\insertsubsection\@empty{
+                \insertsectionhead
+            }\else{
+                \insertsectionhead\,:\,\insertsubsection
+            }\fi
+        }\fi
+        \hfill
+        \insertframenumber
+        \strut
+	\end{beamercolorbox}%
+}%
+\setbeamertemplate{footline}[footline]
+
+%---------------------------------------------------------------------
+% Frame Title
+%---------------------------------------------------------------------
+\setbeamertemplate{frametitle}{%
+    \nointerlineskip
+    \begin{beamercolorbox}[
+		sep=0mm,%
+		leftskip=4mm,%
+	    rightskip=4mm,%,
+        ht=6mm,
+        dp=0mm,
+        wd=\paperwidth
+	]{structure}
+        \insertframetitle
+    \end{beamercolorbox}
+    \vskip\smallskipamount
+}%

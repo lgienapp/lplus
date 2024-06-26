@@ -1,0 +1,78 @@
+% --------------------------------------------------------------------
+% Name           : beamerfontthemelplus.sty
+% Author         : Lukas Gienapp
+% Version        : 0.1
+% License        : This file may be distributed and/or modified under 
+%				   the GNU Public License.
+% Description    : A simplistic, feature-complete Beamer theme.
+%---------------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerfontthemelplus}[2018/04/11 lplus font theme]
+
+%---------------------------------------------------------------------
+% Load Fonts
+%---------------------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[sfdefault]{inter}
+\usepackage[varqu,scale=1.12]{inconsolata}
+\renewcommand{\familydefault}{\sfdefault}
+
+
+
+%---------------------------------------------------------------------
+% Styling
+%---------------------------------------------------------------------
+
+% General Text ----------------------------------------------------------------
+% currently not changed
+\setbeamerfont{normal text}{}
+\setbeamerfont{alerted text}{}
+\setbeamerfont{example text}{}
+
+% Structures (Items etc.) -----------------------------------------------------
+\setbeamerfont{structure}{size=\normalsize}
+\setbeamerfont{tiny structure}{size=\tiny}
+
+\setbeamerfont{block title}{size=\normalsize}
+\setbeamerfont{block title alerted}{size=\normalsize}
+
+\setbeamerfont{caption name}{size=\normalsize}
+\setbeamerfont{description item}{size=\normalsize}
+
+
+% Title Page ------------------------------------------------------------------
+\setbeamerfont{title}{size=\Large,series=\bfseries}
+\setbeamerfont{subtitle}{size=\normalsize,series=\bfseries,shape=\sl}
+
+\setbeamerfont{author}{family=\sffamily}
+\setbeamerfont{date}{parent=author,size=\small}
+\setbeamerfont{email}{parent=author}
+\setbeamerfont{institute}{parent=author,size=\small}
+
+% Table of Contents -----------------------------------------------------------
+\setbeamerfont{section in toc}{parent=structure, size=\normalsize, series=\mdseries}
+\setbeamerfont{section in toc shaded}{parent=section in toc, series=\mdseries}
+\setbeamerfont{subsection in toc}{size=\small}
+\setbeamerfont{subsection in toc shaded}{parent=subsection in toc}
+\setbeamerfont{subsubsection in toc}{size=\footnotesize}
+\setbeamerfont{subsubsection in toc shaded}{parent=subsubsection in toc}
+
+% Head- and Footline ----------------------------------------------------------
+\setbeamerfont{frametitle}{parent=structure,size=\large}
+\setbeamerfont{framesubtitle}{parent=frametitle,size=\small}
+\setbeamerfont{section in head/foot}{series=\bfseries}
+\setbeamerfont{framenumber}{size=\small}
+
+% Unused Fonts ----------------------------------------------------------------
+% for quick customization if theme is changed to include these
+\setbeamerfont{title in head/foot}{}
+\setbeamerfont{author in head/foot}{}
+\setbeamerfont{institute in head/foot}{}
+
+\setbeamerfont{section name}{size=\large}
+\setbeamerfont{section title}{size=\large,parent=title}
+\setbeamerfont{subsection name}{size=\normalsize}
+\setbeamerfont{subsection title}{size=\normalsize,parent=title}
+
+\mode
+<all>

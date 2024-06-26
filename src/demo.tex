@@ -1,0 +1,320 @@
+% --------------------------------------------------------------------
+% Name           : slides.tex
+% Author         : Lukas Gienapp
+% Version        : 0.1
+% License        : This file may be distributed and/or modified under 
+%				   the GNU Public License.
+% Description    : A simplistic, feature-complete Beamer theme.
+%---------------------------------------------------------------------
+\documentclass[aspectratio=169,colorblocks,darkmode]{beamer}
+\usetheme{lplus}
+
+\usepackage{booktabs}
+\usepackage{tikz}
+
+\tikzset{
+    invisible/.style={opacity=0,text opacity=0},
+    visible on/.style={alt=#1{}{invisible}},
+    alt/.code args={<#1>#2#3}{%
+      \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} 
+    }
+}
+
+
+\newcommand{\themename}{\textbf{lplus}~}
+
+\title[L+]{lplus}
+\subtitle[Beamer Theme]{A minimalist Beamer theme}
+\author[Author One et al.]{Author One \inst{1} \and Author Two \inst{1} \and Author Three \inst{2}}
+% Affiliations
+\institute{\inst{1} First institute \and \inst{2} Second institute}
+\date{\today}
+\titlegraphic{../assets/lplus.pdf}
+
+\begin{document}
+
+\maketitle
+
+%\begin{frame}{Table of contents}
+%  \setbeamertemplate{section in toc}[sections numbered]
+%  \tableofcontents
+%\end{frame}
+
+\section{Introduction}
+
+\begin{frame}[fragile]{lplus}
+\themename  is a simplistic, feature-complete Beamer theme.
+
+Enable the theme by loading
+\begin{verbatim}
+    \documentclass{beamer}
+    \usetheme{lplus}
+\end{verbatim}
+\end{frame}
+
+\section{Options}
+
+\begin{frame}[fragile]{Package Options}
+Besides the standard beamer package options (such as \alert{\texttt{aspect}}), \themename introduces several custom package options:
+\begin{itemize}
+\item \alert{\texttt{darkmode}} uses an inverted color scheme
+\item \alert{\texttt{nosectionpages}} and \alert{\texttt{nosubsectionpages}} hides section or only subsection pages. If section pages are hidden, no subsections are shown regardless of whether \alert{\texttt{nosubsectionpages}} is set.
+\item \alert{\texttt{truewhite}} reverts to pure white and black; the theme uses a slight off-white and gray by default, which can cause problems when, e.g., printing
+\item \alert{\texttt{colorblocks}} renders block environments with background colors. By default, only the outline of a block is drawn.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Title Page Macros}
+The usual title page macros such as author, date, title and subtitle are supported.
+Additional options include:
+\begin{itemize}
+\item Short title for use in the header (analogous for subtitle) \\
+\verb+\title[short title]{long title}+ 
+\item Institution \\ 
+\verb+\institute{institution}+
+\item Additional graphics on the title page: \\ 
+\verb+\titlegraphic{filename}+
+\end{itemize}
+\end{frame}
+
+\section{Typography}
+
+\begin{frame}[fragile]{Typography}
+\themename uses the marvellous \href{https://rsms.me/inter/}{\texttt{inter}} font family, paired with \href{https://levien.com/type/myfonts/inconsolata.html}{\texttt{inconsolata}} for monospaced text.
+\begin{verbatim}
+You can \emph{emphasize} text, \alert{accent} 
+parts or show \textbf{bold} results.
+\end{verbatim}
+\begin{center}becomes\end{center}
+You can \emph{emphasize} text, \alert{accent} parts or show \textbf{bold} results.\footnote{Footnotes work as well. Even in \texttt{monospace}.}
+\end{frame}
+
+\begin{frame}{Font features}
+  \begin{itemize}
+    \item Regular
+    \item \textit{Italic}
+    \item \textbf{Bold}
+    \item \textbf{\textit{Bold Italic}}
+    \item \texttt{Monospace}
+    \item \texttt{\textit{Monospace Italic}}
+    \item \texttt{\textbf{Monospace Bold}}
+    \item \texttt{\textbf{\textit{Monospace Bold Italic}}}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Lists}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.33\textwidth}
+      Items
+      \begin{itemize}
+        \item Item \item Item \item Item
+      \end{itemize}
+
+    \column{0.33\textwidth}
+      Enumerations
+      \begin{enumerate}
+        \item First \item Second  \item Last
+      \end{enumerate}
+
+    \column{0.33\textwidth}
+      Descriptions
+      \begin{description}
+        \item[Caption] Text 
+        \item[Caption] Text
+        \item[Caption] Text
+      \end{description}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Math}
+  \begin{equation*}
+    \frac{1}{\sigma\sqrt{2\pi}}\exp\biggl(\frac{-x^2}{2\sigma^2}\biggr)
+  \end{equation*}
+\end{frame}
+
+\begin{frame}[fragile]{Citations}
+For a general introduction to creating slides with Beamer, refer to the Beamer manual.\cite{BeamerManual}
+\end{frame}
+
+
+\section{Environments}
+\begin{frame}{Environments}
+\themename defines the standard beamer environments:
+\begin{itemize}
+    \item Figures
+    \item Tables
+    \item Blocks
+\end{itemize}
+\end{frame}
+
+\subsection{Figures}
+\begin{frame}{Figures}
+  \begin{figure}
+    \begin{tikzpicture}[scale=1.25]
+   	\draw [help lines] (-4.25,-1.25) grid (4.25,1.5);
+   	\draw [help lines,step=0.25cm] (-2.99,0) grid (2.99,0.99);
+   \begin{scope}[smooth,draw=gray!20,y=0.3989422804cm]
+        \filldraw [fill=Blue5] plot[id=f1,domain=-3:-2] function {exp(-x*x/2)}
+            -- (-2,0) -- (-3,0) -- cycle;
+        \filldraw [fill=Blue3] plot[id=f2,domain=-2:-1] function {exp(-x*x/2)}
+            -- (-1,0) -- (-2,0) -- cycle;
+        \filldraw [fill=Blue1] plot[id=f3,domain=-1:0]  function {exp(-x*x/2)}
+            -- (0,0)  -- (-1,0) -- cycle;
+        \filldraw [fill=Blue1] plot[id=f4,domain=0:1] function {exp(-x*x/2)}
+            -- (1,0)  --  (0,0) -- cycle;
+        \filldraw [fill=Blue3] plot[id=f5,domain=1:2] function {exp(-x*x/2)}
+            -- (2,0)  -- (1,0) -- cycle;
+        \filldraw [fill=Blue5] plot[id=f6,domain=2:3] function {exp(-x*x/2)}
+            -- (3,0)  -- (2,0) -- cycle;
+        \draw[black] plot[id=f7,domain=-4.25:4.25,samples=100]
+            function {exp(-x*x/2)};
+   \end{scope}
+       \draw[->] (-4.25,0) -- (4.25,0) node [right] {$x$};
+
+    \foreach \pos/\label in {-3/$-3\sigma$,-2/$-2\sigma$,-1/$-\sigma$,
+            1/$\sigma$,2/$2\sigma$,3/$3\sigma$}
+        \draw (\pos,0) -- (\pos,-0.1) (\pos cm,-3ex) node
+            [anchor=base,inner sep=1pt]  {\label};
+
+    \draw (-0.1,1) -- (.1,1) node [right,inner sep=1pt] {$\sigma$};
+
+    \foreach \pos/\percent/\height in {1/34/0.5,2/14/0.25,3/2/0.125,4/0.1/0.1}
+    {
+      \node[text=Blue\pos,anchor=base,yshift=2pt,xshift=-0.625cm,
+        inner sep=1pt] at (\pos,\height) {$\percent\%$};
+      \node[text=Blue\pos,anchor=base,yshift=2pt,xshift=.625cm,
+        inner sep=1pt]  at (-\pos,\height) {$\percent\%$};
+    }
+\end{tikzpicture}
+    \caption{Standard deviation from \href{http://texample.net/tikz/examples/standard-deviation/}{texample.net}.}
+  \end{figure}
+\end{frame}
+
+\subsection{Tables}
+\begin{frame}{Tables}
+  \begin{table}
+    \caption{Largest cities in the world (source: Wikipedia)}
+    \begin{tabular}{@{} lr @{}}
+      \toprule
+      City & Population\\
+      \midrule
+      Mexico City & \texttt{20,116,842}\\
+      Shanghai    & \texttt{19,210,000}\\
+      Peking      & \texttt{15,796,450}\\
+      Istanbul    & \texttt{14,160,467}\\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+\subsection{Blocks}
+\begin{frame}{Blocks}
+  	Five different block environments are pre-defined. The \texttt{colorblocks} option can be invoked to render solid block background colors.
+   
+    \begin{block}{Default}
+    Block content.
+    \end{block}
+
+    \begin{alertblock}{Alert}
+    Block content.
+    \end{alertblock}
+    
+    \begin{exampleblock}{Example}
+    Block content.
+    \end{exampleblock}
+
+    \begin{remark}{Remark}
+    Block content.
+    \end{remark}
+    
+    \begin{standout}[4cm]
+    Standout content with specified width.
+    \end{standout}
+\end{frame}
+
+\section{Colors}
+\begin{frame}{Colors}
+
+\themename defines a color-blind friendly theme of 5 colors in 6 perceptually uniform variants each. Colors are automatically inverted in dark mode. The white and black used by the theme are defined as \texttt{Black} and \texttt{White}.
+
+\begin{center}
+    \begin{tikzpicture}
+        % Draw Examples
+        \foreach \color/\y  in {
+            Gray/-1, % Gray
+            Blue/-2, % Blue
+            Red/-3, % Red
+            Purple/ -4, % Purple
+            Green/ -5, % Green
+            Yellow/-6  % Yellow    
+        }{%
+            \foreach \index/\x in {
+                1/0,
+                2/2,
+                3/4,
+                4/6,
+                5/8,
+                6/10
+             }{
+                \node[
+                    rectangle, 
+                    minimum width=10ex,
+                    minimum height=2ex,
+                    fill=\color\index,
+                    label={\scriptsize\texttt{\color\index}}
+                ] at (\x, \y) {};
+            }
+           
+        }%
+    \end{tikzpicture}
+\end{center}
+\end{frame}
+
+\begin{frame}{Color Gradients}
+
+\begin{columns}
+    \begin{column}{.49\textwidth}
+    The six variants in each color are equally spaced in brightness. They can be linearly interpolated to approximate perceptually uniform gradients. 
+    \vspace{1em}
+    
+    The use of colors beyond the \texttt{1} and \texttt{6} variants is discouraged as lighter and darker colors are too hard to tell apart.
+    \end{column}
+
+    \begin{column}{.49\textwidth}
+        \usepgflibrary {shadings}
+        \begin{center}
+        \begin{tikzpicture}
+        
+        \foreach \i/\color in {1/Red, 2/Purple, 3/Blue, 4/Green, 5/Yellow, 6/Gray}{
+            %\draw[left color=Black, right color=\color1, draw=none] (-1.3,\i) rectangle (1,\i+1); 
+            \foreach \j/\k in {1/2,2/3,3/4,4/5,5/6}{
+                 \draw[left color=\color\j, right color=\color\k, draw=none] (\j,\i) rectangle (\k,\i+1);    
+             }
+             %\draw[left color=\color6, right color=White, draw=none] (6,\i) rectangle (6.54,\i+1);    
+        }
+        \foreach \i in {1,2,3,4,5,6}{
+             \path [draw, line width=.25pt, color=White] (\i, 0) -- (\i, 7);
+             \node[text=Black] at (\i, .75) {\i};
+        }
+        %\draw[fill=none, draw=Black] (-1.3, 1) rectangle (6.54, 7);
+        \end{tikzpicture}
+        \end{center}
+    \end{column}
+\end{columns}
+\end{frame}
+
+
+\section*{References}
+\begin{frame}[allowframebreaks]
+  \bibliographystyle{plain}
+	\begin{thebibliography}
+    @misc{BeamerManual,
+      title = {{The beamer class} - User Guide for version 3.50.},
+      howpublished = {\url{http://tug.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf}},
+      note = {Accessed: 2018-04-05}
+    }
+  \end{thebibliography}
+\end{frame}
+
+
+\end{document}

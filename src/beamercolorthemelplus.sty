@@ -1,0 +1,210 @@
+% --------------------------------------------------------------------
+% Name           : beamercolorthemelplus.sty
+% Author         : Lukas Gienapp
+% Version        : 0.1
+% License        : This file may be distributed and/or modified under 
+%				   the GNU Public License.
+% Description    : A simplistic, feature-complete Beamer theme.
+%---------------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamercolorthemelplus}[2018/04/11 lplus color theme]
+
+%---------------------------------------------------------------------
+% Base Colors
+%---------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------
+% Styling
+%---------------------------------------------------------------------
+\if@doDarkMode%
+	% Style if Nightmode is enabled
+    \definecolor{Purple1}{HTML}{F6E6F7}%
+    \definecolor{Purple2}{HTML}{D6ACFA}%
+    \definecolor{Purple3}{HTML}{BB86F3}%
+    \definecolor{Purple4}{HTML}{9951E6}%
+    \definecolor{Purple5}{HTML}{6D34A7}%
+    \definecolor{Purple6}{HTML}{3E235D}%
+    
+    \definecolor{Blue1}{HTML}{DAEEF6}%
+    \definecolor{Blue2}{HTML}{90D7DE}%
+    \definecolor{Blue3}{HTML}{68B4C2}%
+    \definecolor{Blue4}{HTML}{3A91A5}%
+    \definecolor{Blue5}{HTML}{156A82}%
+    \definecolor{Blue6}{HTML}{034257}%
+    
+    \definecolor{Green1}{HTML}{DFEFE1}%
+    \definecolor{Green2}{HTML}{9ED977}%
+    \definecolor{Green3}{HTML}{62BA61}%
+    \definecolor{Green4}{HTML}{349850}%
+    \definecolor{Green5}{HTML}{12753E}%
+    \definecolor{Green6}{HTML}{02522B}%
+    
+    \definecolor{Red1}{HTML}{FFE4DE}%
+    \definecolor{Red2}{HTML}{FFAB9E}%
+    \definecolor{Red3}{HTML}{FF6F52}%
+    \definecolor{Red4}{HTML}{E64727}%
+    \definecolor{Red5}{HTML}{9E3723}%
+    \definecolor{Red6}{HTML}{5B181B}%
+
+    \definecolor{Yellow1}{HTML}{FEEB97}%
+    \definecolor{Yellow2}{HTML}{F9C13C}%
+    \definecolor{Yellow3}{HTML}{EF9000}%
+    \definecolor{Yellow4}{HTML}{CB6F00}%
+    \definecolor{Yellow5}{HTML}{9D5300}%
+    \definecolor{Yellow6}{HTML}{793400}%
+                 
+    \definecolor{Gray1}{HTML}{F2F2F2}% 
+    \definecolor{Gray2}{HTML}{D8D8D8}% 
+    \definecolor{Gray3}{HTML}{A6A6A6}% 
+    \definecolor{Gray4}{HTML}{808080}% 
+    \definecolor{Gray5}{HTML}{595959}% 
+    \definecolor{Gray6}{HTML}{262626}% 
+
+    \if@doTrueWhite%
+         \definecolor{White}{HTML}{000000}%
+        \definecolor{Black}{HTML}{FFFFFF}% 
+    \else 
+        \definecolor{White}{HTML}{202020}%
+        \definecolor{Black}{HTML}{FCFCFC}% 
+    \fi 
+\else%
+    \definecolor{Purple6}{HTML}{F6E6F7}%
+    \definecolor{Purple5}{HTML}{D6ACFA}%
+    \definecolor{Purple4}{HTML}{BB86F3}%
+    \definecolor{Purple3}{HTML}{9951E6}%
+    \definecolor{Purple2}{HTML}{6D34A7}%
+    \definecolor{Purple1}{HTML}{3E235D}%
+    
+    \definecolor{Blue6}{HTML}{DAEEF6}%
+    \definecolor{Blue5}{HTML}{90D7DE}%
+    \definecolor{Blue4}{HTML}{68B4C2}%
+    \definecolor{Blue3}{HTML}{3A91A5}%
+    \definecolor{Blue2}{HTML}{156A82}%
+    \definecolor{Blue1}{HTML}{034257}%
+    
+    \definecolor{Green6}{HTML}{DFEFE1}%
+    \definecolor{Green5}{HTML}{9ED977}%
+    \definecolor{Green4}{HTML}{62BA61}%
+    \definecolor{Green3}{HTML}{349850}%
+    \definecolor{Green2}{HTML}{12753E}%
+    \definecolor{Green1}{HTML}{02522B}%
+    
+    \definecolor{Red6}{HTML}{FFE4DE}%
+    \definecolor{Red5}{HTML}{FFAB9E}%
+    \definecolor{Red4}{HTML}{FF6F52}%
+    \definecolor{Red3}{HTML}{E64727}%
+    \definecolor{Red2}{HTML}{9E3723}%
+    \definecolor{Red1}{HTML}{5B181B}%
+
+    \definecolor{Yellow6}{HTML}{FEEB97}%
+    \definecolor{Yellow5}{HTML}{F9C13C}%
+    \definecolor{Yellow4}{HTML}{EF9000}%
+    \definecolor{Yellow3}{HTML}{CB6F00}%
+    \definecolor{Yellow2}{HTML}{9D5300}%
+    \definecolor{Yellow1}{HTML}{793400}%
+                 
+    \definecolor{Gray6}{HTML}{F2F2F2}% 
+    \definecolor{Gray5}{HTML}{D8D8D8}% 
+    \definecolor{Gray4}{HTML}{A6A6A6}% 
+    \definecolor{Gray3}{HTML}{808080}% 
+    \definecolor{Gray2}{HTML}{595959}% 
+    \definecolor{Gray1}{HTML}{262626}% 
+
+    \if@doTrueWhite%
+        \definecolor{White}{HTML}{FFFFFF}%
+        \definecolor{Black}{HTML}{000000}% 
+    \else 
+        \definecolor{White}{HTML}{FCFCFC}%
+        \definecolor{Black}{HTML}{202020}% 
+    \fi  
+\fi%
+
+
+\setbeamercolor{palette primary}{%
+    fg=Black,
+    bg=White
+}
+\setbeamercolor{background canvas}{bg=White}
+\setbeamercolor{normal text}{fg=Black}
+
+\setbeamercolor{structure}{fg=Blue2}
+\setbeamercolor{frame title}{fg=Blue1, bg=White}
+
+\setbeamercolor{alerted text}{use=structure, fg=structure.fg}
+\setbeamercolor{example text}{fg=Green3}
+
+% Table of Contents -----------------------------------------------------------
+\setbeamercolor{section in toc}{parent=structure}
+\setbeamercolor{section in toc shaded}{parent=section in toc, fg=Black}
+\setbeamercolor{subsection in toc}{fg=Black}
+\setbeamercolor{subsection in toc shaded}{parent=subsection in toc}
+\setbeamercolor{subsubsection in toc}{fg=Black}
+\setbeamercolor{subsubsection in toc shaded}{parent=subsubsection in toc}
+
+% Blocks
+\if@doColorBlocks%
+    \setbeamercolor{block body}{%
+        fg = Blue2,
+        bg = Blue6
+    }
+    \setbeamercolor{block body alerted}{%
+        fg = Red2,
+        bg = Red6
+    }
+    \setbeamercolor{block body example}{%
+        fg = Green2,
+        bg = Green6
+    }
+    \setbeamercolor{block body remark}{%
+        fg = Gray2,
+        bg = Gray6
+    }
+\else
+    \setbeamercolor{block body}{%
+        fg = Blue2,
+        bg = White
+    }
+    \setbeamercolor{block body alerted}{%
+        fg = Red2,
+        bg = White
+    }
+    \setbeamercolor{block body example}{%
+        fg = Green2,
+        bg = White
+    }
+    \setbeamercolor{block body remark}{%
+        fg = Gray2,
+        bg = White
+    }
+\fi
+
+\setbeamercolor{block title}{%
+    fg = Blue6,
+    bg = Blue2
+}
+\setbeamercolor{block title alerted}{%
+    fg = Red6,
+    bg = Red2
+}
+\setbeamercolor{block title example}{%
+    fg = Green6,
+    bg = Green2
+}
+\setbeamercolor{block title remark}{%
+    fg = Gray6,
+    bg = Gray2
+}
+
+% Inverted block
+\setbeamercolor{block body standout}{
+    fg = Yellow1,
+    bg = Yellow6
+}
+
+%---------------------------------------------------------------------
+% Footnotes
+%---------------------------------------------------------------------
+\setbeamercolor{footnote}{fg=Gray2}
+
+\mode<all>

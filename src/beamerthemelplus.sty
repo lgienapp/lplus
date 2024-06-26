@@ -1,0 +1,48 @@
+% --------------------------------------------------------------------
+% Name           : beamerthemelplus.sty
+% Author         : Lukas Gienapp
+% Version        : 0.1
+% License        : This file may be distributed and/or modified under 
+%				   the GNU Public License.
+% Description    : A simplistic, feature-complete Beamer theme.
+%---------------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemelplus}[lplus beamer theme]
+
+
+%---------------------------------------------------------------------
+% Package Options
+%---------------------------------------------------------------------
+\newif\if@doSectionPage
+\@doSectionPagefalse
+\DeclareOption{nosectionpages}{\@doSectionPagetrue}
+%
+\newif\if@doSubsectionPage
+\@doSubsectionPagefalse
+\DeclareOption{nosubsectionpages}{
+    \@doSectionPagetrue
+    \@doSubsectionPagetrue
+}
+%
+\newif\if@doDarkMode
+\@doDarkModefalse
+\DeclareOption{darkmode}{\@doDarkModetrue}
+%
+\newif\if@doTrueWhite
+\@doTrueWhitefalse
+\DeclareOption{truewhite}{\@doTrueWhitetrue}
+%
+\newif\if@doColorBlocks
+\@doColorBlocksfalse
+\DeclareOption{colorblocks}{\@doColorBlockstrue}
+
+%
+\ProcessOptions
+
+%---------------------------------------------------------------------
+% Subthemes
+%---------------------------------------------------------------------
+\useinnertheme{lplus}
+\useoutertheme{lplus}
+\usecolortheme{lplus}
+\usefonttheme{lplus}

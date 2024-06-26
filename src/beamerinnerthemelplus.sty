@@ -1,0 +1,325 @@
+% --------------------------------------------------------------------
+% Name           : beamerinnerthemelplus.sty
+% Author         : Lukas Gienapp
+% Version        : 0.1
+% License        : This file may be distributed and/or modified under 
+%				   the GNU Public License.
+% Description    : A simplistic, feature-complete Beamer theme.
+%---------------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerinnerthemelplus}[2018/04/11 lplus inner theme]
+
+%---------------------------------------------------------------------
+% Sizing
+%---------------------------------------------------------------------
+\setbeamersize{
+    text margin left=4mm, % Margin left
+    text margin right=4mm, % Margin right
+} 
+
+
+%---------------------------------------------------------------------
+% Section Page
+%---------------------------------------------------------------------
+\if@doSectionPage\@empty
+\else%
+    \AtBeginSection[]{%
+        \begin{frame}[plain]
+        \vbox to \paperheight{%
+            \bgroup
+            \vskip1\baselineskip
+            \fontsize{2}{18}\selectfont
+            \tableofcontents[
+                currentsection, 
+                subsectionstyle=hide
+            ]
+            \vskip0pt plus 1filll
+            \egroup
+        }%
+        \end{frame}
+    }
+    \if@doSubsectionPage\@empty
+    \else%
+        \AtBeginSubsection[]{%
+            \begin{frame}[plain]
+            \vbox to \paperheight{%
+                \bgroup
+                \vskip1\baselineskip
+                \fontsize{2}{18}\selectfont
+                \tableofcontents[
+                    currentsection, 
+                    subsectionstyle=show/shaded/hide
+                ]
+                \vskip0pt plus 1filll
+                \egroup
+            }%
+            \end{frame}
+        }%
+    \fi%
+\fi%
+
+%---------------------------------------------------------------------
+% Title Page
+%---------------------------------------------------------------------
+\renewcommand{\maketitle}{%
+	\ifbeamer@inframe\titlepage%
+    \else\frame[plain]{\titlepage}%
+    \fi%
+}
+\renewcommand{\titlepage}{\usebeamertemplate{titlepage}}
+\setbeamertemplate{titlepage}{%
+    \begin{columns}
+    \begin{column}{.7\textwidth}
+    	\vbox to .8\paperheight{
+        	\vfil
+    		\ifx\inserttitle\@empty%
+   			\else%
+                \nointerlineskip
+                \begin{beamercolorbox}{structure}
+    			{\usebeamerfont{title}\inserttitle\par}%
+                \end{beamercolorbox}
+   			\fi%
+            \ifx\insertsubtitle\@empty%
+                \vspace*{4ex}
+    		\else%
+                \vspace*{1ex}
+    			{\usebeamerfont{subtitle}\insertsubtitle\par}%
+    			\vspace*{4ex}
+    		\fi%
+            \ifx\insertauthor\@empty%
+    		\else%
+    			{\usebeamerfont{author}\insertauthor\par}%
+    			\vspace*{2ex}
+    		\fi%
+            \ifx\insertinstitute\@empty%
+    		\else%
+    			{\usebeamerfont{institute}\insertinstitute\par}%
+    			\vspace*{2ex}
+    		\fi%
+            \vfil
+    		\ifx\insertdate\@empty%
+    		\else%
+    			{\usebeamerfont{date}\insertdate\par}%
+    		\fi% 
+        }%
+    \end{column}
+    \hfill
+    \begin{column}{.2\textwidth}
+        \vbox to .8\paperheight{
+            \vfil
+            \ifx\inserttitlegraphic\@empty%
+            \else%
+                \includegraphics[width=\linewidth]{\inserttitlegraphic}
+            \fi%
+            \vfil
+        }
+    \end{column}
+    \end{columns}
+}
+
+%---------------------------------------------------------------------
+% Itemize
+%---------------------------------------------------------------------
+\setbeamertemplate{itemize item}{--}
+\setbeamertemplate{itemize subitem}{-}
+\setbeamertemplate{itemize subsubitem}{\textbullet}
+\setlength{\parskip}{0.5em}
+
+%---------------------------------------------------------------------
+% Blocks
+%---------------------------------------------------------------------
+\newlength{\beamer@ltheme@blockht}
+\newlength{\beamer@ltheme@blocksep}
+\newlength{\beamer@ltheme@blockdp}
+\newlength{\beamer@ltheme@blockleftskip}
+\newlength{\beamer@ltheme@blockrightskip}
+\newlength{\beamer@ltheme@blockborder}
+\setlength{\beamer@ltheme@blockht}{2ex}
+\setlength{\beamer@ltheme@blocksep}{.25ex}
+\setlength{\beamer@ltheme@blockdp}{.25ex}
+\setlength{\beamer@ltheme@blockrightskip}{.25ex}
+\setlength{\beamer@ltheme@blockleftskip}{.25ex}
+\setlength{\beamer@ltheme@blockborder}{.25ex}
+
+\setbeamertemplate{block begin}
+{%
+  \setbeamercolor{item}{parent=block body}
+  \par\vskip\smallskipamount%
+  % border box
+  \begin{beamercolorbox}[colsep*=\beamer@ltheme@blockborder]{block title}
+  % title box
+  \begin{beamercolorbox}[
+		sep=\beamer@ltheme@blocksep,%
+		leftskip=\beamer@ltheme@blockleftskip,%
+		rightskip=\beamer@ltheme@blockrightskip,%
+	]{block title}
+    \usebeamerfont*{block title}\insertblocktitle\strut%
+  \end{beamercolorbox}%
+  {\parskip0pt\par}%
+  {\nointerlineskip\vskip-0.5pt}%
+  \usebeamerfont{block body}%
+  \begin{beamercolorbox}[
+		sep=2\beamer@ltheme@blocksep,%
+		dp=\beamer@ltheme@blockdp,%
+		leftskip=\beamer@ltheme@blockleftskip,%
+		rightskip=\beamer@ltheme@blockrightskip,%
+		vmode%
+    ]{block body}%
+}%
+\setbeamertemplate{block end}  
+{%
+    \end{beamercolorbox}
+    \end{beamercolorbox}
+    \vskip\smallskipamount
+}%
+
+% Alert Block
+\setbeamertemplate{block alerted begin}
+{%
+  \setbeamercolor{item}{parent=block body alerted}
+  \par\vskip\smallskipamount%
+  % border box
+  \begin{beamercolorbox}[colsep*=\beamer@ltheme@blockborder]{block title alerted}
+  % title box
+  \begin{beamercolorbox}[
+		sep=\beamer@ltheme@blocksep,%
+		leftskip=\beamer@ltheme@blockleftskip,%
+		rightskip=\beamer@ltheme@blockrightskip,%
+	]{block title alerted}
+    \usebeamerfont*{block title alerted}\insertblocktitle\strut%
+  \end{beamercolorbox}%
+  {\parskip0pt\par}%
+  {\nointerlineskip\vskip-0.5pt}%
+  \usebeamerfont{block body alerted}%
+  \begin{beamercolorbox}[
+		sep=2\beamer@ltheme@blocksep,%
+		dp=\beamer@ltheme@blockdp,%
+		leftskip=\beamer@ltheme@blockleftskip,%
+		rightskip=\beamer@ltheme@blockrightskip,%
+		vmode%
+        ]{block body alerted}%
+}%
+\setbeamertemplate{block alerted end}
+{%
+    \end{beamercolorbox}
+    \end{beamercolorbox}
+    \vskip\smallskipamount
+}
+
+% Example Block
+\setbeamertemplate{block example begin}
+{%
+	\setbeamercolor{item}{parent=block body example}
+  	\par\vskip\smallskipamount%
+    % border box
+    \begin{beamercolorbox}[colsep*=\beamer@ltheme@blockborder]{block title example}
+    % title box
+  	\begin{beamercolorbox}[
+		sep=\beamer@ltheme@blocksep,%
+		leftskip=\beamer@ltheme@blockleftskip,%
+		rightskip=\beamer@ltheme@blockrightskip,%
+	]{block title example}
+    \usebeamerfont*{block title example}\insertblocktitle\strut%
+  	\end{beamercolorbox}%
+  	{\parskip0pt\par}%
+  	{\nointerlineskip\vskip-0.5pt}%
+  	\usebeamerfont{block body example}%
+  	\begin{beamercolorbox}[
+		sep=2\beamer@ltheme@blocksep,%
+		dp=\beamer@ltheme@blockdp,%
+		leftskip=\beamer@ltheme@blockleftskip,%
+		rightskip=\beamer@ltheme@blockrightskip,%
+		vmode%
+    ]{block body example}%
+}%
+\setbeamertemplate{block example end}
+{%
+    \end{beamercolorbox}
+    \end{beamercolorbox}
+    \vskip\smallskipamount
+}
+
+% Remark block
+\newenvironment<>{remark}[1]{%
+  \usebeamerfont{block body remark}%
+  \setbeamercolor{item}{parent=block body example}
+  	\par\vskip\smallskipamount%
+    % border box
+    \begin{beamercolorbox}[colsep*=\beamer@ltheme@blockborder]{block title remark}
+    % title box
+  	\begin{beamercolorbox}[
+		sep=\beamer@ltheme@blocksep,%
+		leftskip=\beamer@ltheme@blockleftskip,%
+		rightskip=\beamer@ltheme@blockrightskip,%
+	]{block title remark}
+    \usebeamerfont*{block title remark}#1\strut%
+  	\end{beamercolorbox}%
+  	{\parskip0pt\par}%
+  	{\nointerlineskip\vskip-0.5pt}%
+  	\usebeamerfont{block body remark}%
+  	\begin{beamercolorbox}[
+		sep=2\beamer@ltheme@blocksep,%
+		dp=\beamer@ltheme@blockdp,%
+		leftskip=\beamer@ltheme@blockleftskip,%
+		rightskip=\beamer@ltheme@blockrightskip,%
+		vmode%
+    ]{block body remark}%
+}%
+{%
+    \end{beamercolorbox}
+    \end{beamercolorbox}
+    \vskip\smallskipamount
+}%
+
+% Standout Block
+
+\newenvironment<>{standout}[2][\textwidth]{%
+  \usebeamerfont{block body standout}%
+  \setlength{\textwidth}{#1}
+  \setlength{\linewidth}{\textwidth}% required to itemize respect the width of block
+  \hfill
+  \begin{beamercolorbox}[
+		sep=2\beamer@ltheme@blocksep,%
+		dp=\beamer@ltheme@blockdp,%
+		leftskip=\beamer@ltheme@blockleftskip,%
+		rightskip=\beamer@ltheme@blockrightskip,%
+		vmode%
+  ]{block body standout}\centering%
+  #3{#2}%
+}%
+{%
+    \end{beamercolorbox}\hfill\hfill\vskip\smallskipamount%
+}%
+  
+%---------------------------------------------------------------------
+% Figures
+%---------------------------------------------------------------------
+% Intentionally blank
+	
+%---------------------------------------------------------------------
+% Tables
+%---------------------------------------------------------------------
+% Intentionally blank
+	
+%---------------------------------------------------------------------
+% Footnotes
+%---------------------------------------------------------------------
+\setbeamertemplate{footnote}{%
+ 	\parindent 0em\noindent%
+ 	\raggedright
+ 	\usebeamerfont{footnote}
+ 	\usebeamercolor{footnote mark}
+ 	\hbox to 0.8em{\hfil\insertfootnotemark}
+ 	\usebeamercolor{footnote text}
+ 	\insertfootnotetext\par%
+ 	\vspace{0.75cm}
+}
+
+%---------------------------------------------------------------------
+% Captions
+%---------------------------------------------------------------------
+\setbeamertemplate{caption label separator}{: }
+\setbeamertemplate{caption}[numbered]
+
+\mode
+<all>
